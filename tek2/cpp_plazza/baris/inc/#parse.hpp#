@@ -1,0 +1,12 @@
+#ifndef PARSE_H_
+# define PARSE_H_
+
+class Parse {
+public :
+  void  Parse(){};
+  void  ~Parse(){};
+  
+}
+
+
+#endif /* !PARSE_H_ */

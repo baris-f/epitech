@@ -1,0 +1,10 @@
+[base]
+dim="1280","720"
+full="0"
+max_ram="50"
+name="deflap"
+[keys]
+esc="36"
+[text]
+id="01","02","03","04","05","06"
+size="6"

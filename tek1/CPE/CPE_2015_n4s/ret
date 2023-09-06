@@ -1,0 +1,33 @@
+src/calc.c:    need->lidar[i - 3] = my_getnbr(lidar[i]);
+src/calc.c:  fprintf(need->fp, "%s\n", lidar[35]);
+src/calc.c:  fflush(need->fp);
+src/calc.c:  need->left = 0;
+src/calc.c:  need->right = 0;
+src/calc.c:    need->left += need->lidar[i];
+src/calc.c:  need->left /= 16;
+src/calc.c:    need->right += need->lidar[i];
+src/calc.c:  need->right /= 16;
+src/calc.c:  need->angle[0].ang = 0;
+src/calc.c:  need->angle[0].dist = need->lidar[0];
+src/calc.c:  while (need->lidar[++i] < need->limit && i < 16);
+src/calc.c:  need->angle[1].ang = i - 1;
+src/calc.c:  need->angle[1].dist = need->lidar[i - 1];
+src/calc.c:  need->angle[2].ang = 31;
+src/calc.c:  need->angle[2].dist = need->lidar[31];
+src/calc.c:  while (need->lidar[--i] < need->limit && i > 15);
+src/calc.c:  need->angle[3].ang = i + 1;
+src/calc.c:  need->angle[3].dist = need->lidar[i + 1];
+src/main.c:  fprintf(need->fp, "wall hit  ");
+src/main.c:  left = need->lidar[12];
+src/main.c:  right = need->lidar[24];
+src/main.c:      || need->lidar[0] < 50 || need->lidar[31] < 50)
+src/print.c:    need->ret = 0;
+src/print.c:    need->ret = 0;
+src/turn.c:  if (left > need->limit && right > need->limit)
+src/turn.c:      if ((need->limit - left * 2) > 0 &&
+src/turn.c:	  ((right - left) / (need->limit - left * 2)) > 0)
+src/turn.c:	nb /= ((right - left) / (need->limit - left * 2));
+src/turn.c:      if ((need->limit - left * 2) > 0 &&
+src/turn.c:	  ((left - right) / (need->limit - right * 2)) > 0)
+src/turn.c:	nb /= ((left - right) / (need->limit - right * 2));
+src/turn.c:  set_turn(need, need->left, need->right);

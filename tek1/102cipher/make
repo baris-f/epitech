@@ -1,0 +1,2 @@
+cp ./102cipher.py ./102cipher
+chmod +x 102cipher

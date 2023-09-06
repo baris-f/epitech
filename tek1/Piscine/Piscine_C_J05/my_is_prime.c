@@ -1,0 +1,31 @@
+/*
+** my_is_prime.c for my_is_prime in /home/baris_f/rendu/Piscine_C_J05
+** 
+** Made by Florent Baris
+** Login   <baris_f@epitech.net>
+** 
+** Started on  Fri Oct  2 12:49:39 2015 Florent Baris
+** Last update Fri Oct  2 13:28:18 2015 Florent Baris
+*/
+
+int	my_is_prime(int nb)
+{
+  int result;
+  int i;
+
+  i = 2;
+  if (nb <= 1)
+    return (0);
+  result = my_isprimerec(nb, i);
+  return (result);
+}
+
+int	my_isprimerec(int nb, int i)
+{
+  if (i == nb)
+    return (1);
+  if ((nb % i) == 0)
+    return (0);
+  i++;
+  my_isprimerec(nb, i);
+}

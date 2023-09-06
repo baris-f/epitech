@@ -1,0 +1,8 @@
+train.cmo :
+train.cmx :
+journey.cmo : train.cmo
+journey.cmx : train.cmx
+trainmanager.cmo : train.cmo journey.cmo
+trainmanager.cmx : train.cmx journey.cmx
+main.cmo : trainmanager.cmo train.cmo journey.cmo
+main.cmx : trainmanager.cmx train.cmx journey.cmx

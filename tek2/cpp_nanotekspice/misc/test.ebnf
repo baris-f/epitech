@@ -1,0 +1,14 @@
+word_sep = (' ' | '\t')+;
+ln_sep = '\n'+;
+
+name = ('a' ... 'z' | '0' ... '9')+;
+ln_val = ('0' ... '9')+;
+
+chip = '2716' | '4001' | '4008' | '4011' | '4013' | '4017' | '4030' | '4040' | '4069' | '4071' | '4081' | '4094' | '4503' | '4512' | '4514' | 'i4004' | 'mk4801';
+cmpnt = chip | 'input' | 'clock' | 'true' | 'false' | 'output';
+chip_st	= cmpnt , word_sep , name , ln_sep;
+
+link = name , ln_val;
+link_st = link , word_sep , link , ln_sep;
+
+graph_des = '.chipsets:' , ln_sep , chip_st+ , '.links:' , st_sep, link_st+;
