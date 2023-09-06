@@ -1,0 +1,133 @@
+/*
+** makeh.c for makeh in /home/baris-f/rendu/c
+**
+** Made by Florent Baris
+** Login   <baris_f@epitech.net>
+**
+** Started on  Thu Dec  3 21:39:35 2015 Florent Baris
+** Last update Mon Dec 21 09:48:39 2015 Florent Baris
+*/
+
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
+
+typedef struct s_chain
+{
+  char                  *name;
+  struct s_chain        *next;
+} t_chaine;
+
+void    push(t_chaine **list, char *name)
+{
+  t_chaine *temp;
+
+  temp = malloc(sizeof(t_chaine));
+  temp->name = name;
+  temp->next = *list;
+  *list = temp;
+}
+
+void    my_show_list(t_chaine *list)
+{
+  t_chaine *tmp;
+
+  printf("zizi\n");
+  tmp = list;
+  while (tmp != NULL)
+    {
+      my_printf("%s\n", tmp->name);
+      tmp = tmp->next;
+    }
+}
+
+void    my_cat(char *buff, int d, int f, t_chaine **list)
+{
+  char	*str;
+  int		i;
+  if ((str = malloc(sizeof(char) * (f - d) + 1)) == NULL)
+    return ;
+  printf(" f -d %d\n", f-d);
+  d--;
+  i = -1;
+  while (++d < f && buff[d])
+    str[++i] = buff[d];
+  my_printf("%s;\n", str);
+  push(list, str);
+  free(str);
+}
+
+int	maine(int ac, char **av)
+{
+  char	*buff;
+  int	i;
+  int	j;
+  int	fd;
+  int	tmp;
+  t_chaine	*list;
+
+  list = NULL;
+  if (ac == 1)
+    {
+      my_printf("error : need arguments\n");
+      return (0);
+    }
+  if ((buff = malloc(sizeof(char) * 130 * 80)) == NULL)
+    return (0);
+  i = 0;
+  while (av[++i])
+    {
+      j = -1;
+      fd = open(av[i], S_IRUSR);
+      read(fd, buff, 130 * 80);
+      while (buff[++j])
+	{
+	  if (buff[j] == 'v' && buff[j - 1] != '(')
+	    {
+	      tmp = j;
+	      if (buff[++j] == 'o')
+		if (buff[++j] == 'i')
+		  if (buff[++j] == 'd')
+		    if (buff[++j] == ' ' || buff[j] == 9)
+		      if (buff[++j] == ' ' || buff[j - 1] == 9)
+			{
+			  while (buff[++j] != '\n');
+			  if (buff[j - 1] == ')')
+			    my_cat(buff, tmp, j, &list);
+			}
+	    }
+	  if (buff[j] == 'i' && buff[j - 1] != '(')
+	    {
+	      tmp = j;
+	      if (buff[++j] == 'n')
+		if (buff[++j] == 't')
+		  if (buff[++j] == ' ' || buff[j] == 9)
+		    if (buff[++j] == ' ' || buff[j - 1] == 9)
+		      {
+			while (buff[++j] != '\n');
+			if (buff[j - 1] == ')')
+			  my_cat(buff, tmp, j, &list);
+		      }
+	    }
+	  if (buff[j] == 'c' && buff[j - 1] != '(')
+	    {
+	      tmp = j;
+	      if (buff[++j] == 'h')
+		if (buff[++j] == 'a')
+		  if (buff[++j] == 'r')
+		    if (buff[++j] == ' ' || buff[j] == 9)
+		      if (buff[++j] == ' ' || buff[j - 1] == 9)
+			{
+			  while (buff[++j] != '\n');
+			  if (buff[j - 1] == ')')
+			    my_cat(buff, tmp, j, &list);
+			}
+	    }
+	}
+    }
+  my_show_list(list);
+  free(buff);
+  return (0);
+}
